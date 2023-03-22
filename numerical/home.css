@@ -1,0 +1,72 @@
+#mySidenav a {
+    position: fixed; /* Position them relative to the browser window */
+    left: -80px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    width: 120px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    font-size: 20px; /* Increase font size */
+    color: white; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+  }
+  .ffont{
+    font-family: 'Blackadder ITC', sans-serif;
+    font-size: 80px;
+    text-align: center;
+
+}
+
+.img1{
+    margin-left: 300px;
+    border-radius: 50px;
+    image-resolution: 100px;
+     box-shadow: 3px 3px red, -1em 0 .4em olive;
+    
+}
+  
+  #mySidenav a:hover {
+    left: 0; /* On mouse-over, make the elements appear as they should */
+  }
+  
+  /* The about link: 20px from the top with a green background */
+  #about {
+    top: 10px;
+    background-color: #04AA6D;
+  }
+  
+  #Bisection {
+    top: 90px;
+    background-color: #2196F3; /* Blue */
+  }
+  
+  #False_position {
+    top: 170px;
+    background-color: #f44336; /* Red */
+  }
+  
+  #fixed_point {
+    top: 250px;
+    background-color: #555 /* Light Black */
+  }
+
+  #secant {
+    top: 330px;
+    background-color: rgb(67, 61, 116) /* Light Black */
+  }
+
+
+  #Newton {
+    top: 410px;
+    background-color: rgb(45, 67, 87) /* Light Black */
+  }
+
+
+  #Matrix {
+    top: 490px;
+    background-color: rgb(71, 23, 23) /* Light Black */
+  }
+
+  #golden {
+    top: 570px;
+    background-color: rgb(43, 25, 25) /* Light Black */
+  }

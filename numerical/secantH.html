@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="assets/math/mathquill.css" />
+	<link rel="stylesheet" href="assets/math/matheditor.css" />
+    <link rel="icon" href="logo.png" />
+    <title>Numerical</title>
+</head>
+<body style="background-color: rgb(37, 37, 37); color: aliceblue;">
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="indexH.html" id="about">About</a>
+        <a href="bisectionH.html" id="Bisection">Bisection</a>
+        <a href="falsposH.html" id="False_position">False position</a>
+        <a href="fxpH.html" id="fixed_point">fixed point</a>
+        <!--<a href="#" id="Secant ">Secant</a>-->
+        <a href="#" id="secant">Secant</a>
+        <a href="newtonH.html" id="Newton">Newton</a>
+        <a href="matrixH.html" id="Matrix">Matrix</a>
+        <a href="goldenH.html" id="golden">golden section </a>
+      </div>
+
+       <!--===========================================================
+           ============    Secant
+           ============
+           ===========================================================-->
+           <div class="inner" style="font-size:40px ;">
+
+			<div align="center">
+				<header style="font-size: 150%;">Secant</header>
+				<div id="errormsg"></div>
+				<table class="input">
+					<thead>
+						<tr>
+							<div id="mathfield" style="width:50%;color:black">2*x^3 - 11.7*x^2 + 17.7*x -5</div>
+							<div id="hidden" style="display:none;color:black">2*x^3 - 11.7*x^2 + 17.7*x -5</div>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>X-1: <input type="number" id="xmin1" value="3" style="font-size: 20px;"></td>
+							<td>Error: <input type="number" id="eps" value="0.5" style="font-size: 20px;">%</td>
+						</tr>
+						<tr>
+							<td>Xo: <input type="number" id="xo" value="4" style="font-size: 20px;"></td>
+							<td>Max iterations: <input type="number" id="maxiter" value="10" style="font-size: 20px;"></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>Root = <label id="root" style="font-size: 20px;"></label></td>
+							<td> </td>
+						</tr>
+					</tfoot>
+				</table>
+
+				<button id="demo" onclick="x(mE.getValue()); clrtab(); secant(xmin1.value, xo.value, eps.value);">Calculate</button>
+				<br>
+
+				<table border="2" class="output" id="disp" style="color:white ;">
+					<thead>
+						<tr>
+							<th>I</th>
+							<th>Xi-1</th>
+							<th>f(Xi-1)</th>
+							<th>Xi</th>
+							<th>f(Xi)</th>
+							
+							<th>Error</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+
+
+	
+
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/math.js"></script>
+	<script src="assets/math/latex-to-js.js"></script>
+	<script src="assets/math/mathquill.js"></script>
+	<script src="assets/math/matheditor.js"></script>
+	<script> //Work-around for Chrome CORS support
+		var mE = new MathEditor('mathfield');
+		function x(x) {
+			var span = document.getElementById('hidden');
+			z = latex_to_js(x);
+			span.innerHTML = z;
+			return x;
+		}	
+
+		
+
+	</script>
+
+
+          
+
+         
+    
+</body>
+</html>

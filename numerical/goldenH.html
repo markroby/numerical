@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="assets/math/mathquill.css" />
+	<link rel="stylesheet" href="assets/math/matheditor.css" />
+    <link rel="icon" href="logo.png" />
+    <title>Numerical</title>
+</head>
+<body style="background-color: rgb(37, 37, 37); color: aliceblue;">
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="indexH.html" id="about">About</a>
+        <a href="bisectionH.html" id="Bisection">Bisection</a>
+        <a href="falsposH.html" id="False_position">False position</a>
+        <a href="fxpH.html" id="fixed_point">fixed point</a>
+        <!--<a href="#" id="Secant ">Secant</a>-->
+        <a href="secantH.html" id="secant">Secant</a>
+        <a href="newtonH.html" id="Newton">Newton</a>
+        <a href="matrixH.html" id="Matrix">Matrix</a>
+        <a href="#" id="golden">golden section </a>
+      </div>
+
+       <!--===========================================================
+           ============    golden section    =========================
+           ===========================================================
+           ===========================================================-->
+           
+
+           <div align="center">
+            <header style="font-size: 150%;">golden section</header>
+            <div id="errormsg"></div>
+            <table class="input">
+                <thead>
+                    <tr>
+                        <div id="mathfield" style="width:50%;color:black">-26 + 82.3*x - 88*x^2 + 45.4*x^3 - 9*x^4 + 0.65*x^5</div>
+                        <div id="hidden" style="display:none;color:black">-26 + 82.3*x - 88*x^2 + 45.4*x^3 - 9*x^4 + 0.65*x^5</div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>xl: <input type="number" id="xL" value="0.5" style="font-size: 20px;"></td>
+                        <td>Error: <input type="number" id="tol" value="8" style="font-size: 20px;">%</td>
+                    </tr>
+                    <tr>
+                        <td>Xu: <input type="number" id="xU" value="1" style="font-size: 20px;"></td>
+                        <td>Max iterations: <input type="number" id="maxiter" value="10" style="font-size: 20px;"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Root = <label id="root" style="font-size: 20px;"></label></td>
+                        <td> </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <button id="demo" onclick="x(mE.getValue()); clrtab(); goldenSectionMinimize(xL.value, xU.value, tol.value);">Calculate</button>
+            <br>
+
+            <table border="2" class="output" id="disp" style="color:white ;">
+                <thead>
+                    <tr>
+                        <th>I</th>
+                        <th>Xi-1</th>
+                        <th>f(Xi-1)</th>
+                        <th>Xi</th>
+                        <th>f(Xi)</th>
+                        
+                        <th>Error</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    
+<!--==========================================================================
+    ====================  java script     ====================================
+    ==========================================================================-->
+
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/math.js"></script>
+	<script src="assets/math/latex-to-js.js"></script>
+	<script src="assets/math/mathquill.js"></script>
+	<script src="assets/math/matheditor.js"></script>
+	<script> //Work-around for Chrome CORS support
+		var mE = new MathEditor('mathfield');
+		function x(x) {
+			var span = document.getElementById('hidden');
+			z = latex_to_js(x);
+			span.innerHTML = z;
+			return x;
+		}	
+
+		
+
+	</script>
+        
+        
+        
+        
+        
+        <script>
+            
+var PHI_RATIO = 2 / (1 + Math.sqrt(5));
+
+module.exports = goldenSectionMinimize;
+
+function goldenSectionMinimize (x , xL, xU, tol, maxIterations, status) {
+  var xF, fF;
+  var iteration = 0;
+  var x1 = xU - PHI_RATIO * (xU - xL);
+  var x2 = xL + PHI_RATIO * (xU - xL);
+  // Initial bounds:
+  var f1 = f(x1);
+  var f2 = f(x2);
+
+  // Store these values so that we can return these if they're better.
+  // This happens when the minimization falls *approaches* but never
+  // actually reaches one of the bounds
+  var f10 = f(xL);
+  var f20 = f(xU);
+  var xL0 = xL;
+  var xU0 = xU;
+
+  // Simple, robust golden section minimization:
+  while (++iteration < maxIterations && Math.abs(xU - xL) > tol) {
+    if (f2 > f1) {
+      xU = x2;
+      x2 = x1;
+      f2 = f1;
+      x1 = xU - PHI_RATIO * (xU - xL);
+      f1 = f(x1);
+    } else {
+      xL = x1;
+      x1 = x2;
+      f1 = f2;
+      x2 = xL + PHI_RATIO * (xU - xL);
+      f2 = f(x2);
+    }
+  }
+
+  xF = 0.5 * (xU + xL);
+  fF = 0.5 * (f1 + f2);
+
+  if (status) {
+    status.iterations = iteration;
+    status.argmin = xF;
+    status.minimum = fF;
+    status.converged = true;
+  }
+
+  if (isNaN(f2) || isNaN(f1) || iteration === maxIterations) {
+    if (status) {
+      status.converged = false;
+    }
+    return NaN;
+  }
+
+  if (f10 < fF) {
+    return xL0;
+  } else if (f20 < fF) {
+    return xU0;
+  } else {
+    return xF;
+  }
+}
+        </script>
+
+
+          
+
+         
+    
+</body>
+</html>

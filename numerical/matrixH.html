@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="assets/math/mathquill.css" />
+	<link rel="stylesheet" href="assets/math/matheditor.css" />
+    <link rel="icon" href="logo.png" />
+    <title>Numerical</title>
+</head>
+<body style="background-color: rgb(37, 37, 37); color: aliceblue;">
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="indexH.html" id="about">About</a>
+        <a href="bisectionH.html" id="Bisection">Bisection</a>
+        <a href="falsposH.html" id="False_position">False position</a>
+        <a href="fxpH.html" id="fixed_point">fixed point</a>
+        <!--<a href="#" id="Secant ">Secant</a>-->
+        <a href="secantH.html" id="secant">Secant</a>
+        <a href="newtonH.html" id="Newton">Newton</a>
+		<a href="goldenH.html" id="golden">golden section </a>
+        <a href="#" id="Matrix">Matrix</a>
+      </div>
+
+       <!--===========================================================
+           ============    Matrix      ===============================
+           ===========================================================
+           ===========================================================-->
+           <div class="inner" style="font-size:40px ;">
+			<div align="center" style="font-size:30px ;">
+				<header style="font-size: 150%;">Matrix methods</header>
+				<select class="matselect" id="selection" onchange="">
+					<option value="sl_no" selected disabled>Select an option to get Started</option>
+					<option value="sl_cr">Cramer's Rule</option>
+					<option value="sl_gs">Gauss Elimination</option>
+					<option value="sl_lu">LU Decomposition</option>
+				</select><br>
+
+				<div id="augmat">
+
+					<table border="" id="augtab" class="augtab">
+						<tr>
+							<td class="cell">
+								<input type="text" id="a1" value="2" style="font-size:18px ;">
+							</td>
+							<td class="cell">
+								<input type="text" id="a2" value="1" style="font-size:18px ;">
+							</td>
+							<td class="cell">
+								<input type="text" id="a3" value="1" style="font-size:18px ;">
+							</td>
+							<div id="hide_x1">
+								<td class="cellX">
+									<input type="text" id="x1" value="8" style="font-size:18px ;">
+								</td>
+							</div>
+						</tr>
+						<tr>
+							<td class="cell">
+								<input type="text" id="b1" value="4" style="font-size:18px ;">
+							</td>
+							<td class="cell">
+								<input type="text" id="b2" value="1" style="font-size:18px ;" >
+							</td>
+							<td class="cell">
+								<input type="text" id="b3" value="0" style="font-size:18px ;">
+							</td>
+							<div id="hide_x2">
+								<td class="cellX">
+									<input type="text" id="x2" value="11" style="font-size:18px ;">
+								</td>
+							</div>
+						</tr>
+						<tr>
+							<td class="cell">
+								<input type="text" id="c1" value="-2" style="font-size:18px ;">
+							</td>
+							<td class="cell">
+								<input type="text" id="c2" value="2" style="font-size:18px ;">
+							</td>
+							<td class="cell">
+								<input type="text" id="c3" value="1" style="font-size:18px ;">
+							</td>
+							<div id="hide_x3">
+								<td class="cellX">
+									<input type="text" id="x3" value="3" style="font-size:18px ;">
+								</td>
+							</div>
+						</tr>
+					</table>
+					<div id="buttons">
+						<button id="calcbtn" style="font-size:18px ;">Calculate</button>
+						<button id="clrbtn" onclick="clraug();"
+							style="background-color: rgba(24, 38, 86, 0.987); color: aliceblue; size:25px ;">Clear</button>
+
+					</div>
+					<br>
+					<table  id="TResult"></table>
+					<foot></foot>
+				</div>
+
+
+
+
+				<div id="outdiv" style="display:block;"></div><br>
+				<div id="resdiv"></div>
+
+
+			</div>
+
+		</div>
+
+	
+
+	
+
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/math.js"></script>
+
+
+
+
+
+         
+    
+</body>
+</html>

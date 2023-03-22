@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="assets/math/mathquill.css" />
+	<link rel="stylesheet" href="assets/math/matheditor.css" />
+    <link rel="icon" href="logo.png" />
+    <title>Numerical</title>
+</head>
+<body style="background-color: rgb(37, 37, 37); color: aliceblue;">
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="indexH.html" id="about">About</a>
+        <a href="bisectionH.html" id="Bisection">Bisection</a>
+        <a href="#" id="False_position">False position</a>
+        <a href="fxpH.html" id="fixed_point">fixed point</a>
+        <!--<a href="#" id="Secant ">Secant</a>-->
+        <a href="secantH.html" id="secant">Secant</a>
+        <a href="newtonH.html" id="Newton">Newton</a>
+        <a href="matrixH.html" id="Matrix">Matrix</a>
+		<a href="goldenH.html" id="golden">golden section </a>
+      </div>
+
+       <!--===========================================================
+           ============     False position 
+           ============
+           ===========================================================-->
+           <div class="inner" style="font-size:40px ;">
+
+			<div align="center">
+				<header style="font-size: 150%;">False position method</header>
+				<div id="errormsg"></div>
+				<table class="input">
+					<thead>
+						<tr>
+							<div id="mathfield" style="width:50%;color:black">-26 + 82.3*x - 88*x^2 + 45.4*x^3 - 9*x^4 + 0.65*x^5</div>
+							<div id="hidden" style="display:none;color:black">-26 + 82.3*x - 88*x^2 + 45.4*x^3 - 9*x^4 + 0.65*x^5</div>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Xl: <input type="number" id="xl" value="0.5" style="font-size: 20px;"></td>
+							<td>Error: <input type="number" id="eps" value="8" style="font-size: 20px;">%</td>
+						</tr>
+						<tr>
+							<td>Xu: <input type="number" id="xu" value="1" style="font-size: 20px;"></td>
+							<td>Max iterations: <input type="number" id="maxiter" value="10" style="font-size: 20px;"></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>Root = <label id="root" style="font-size: 20px;"></label></td>
+							<td> </td>
+						</tr>
+					</tfoot>
+				</table>
+
+				<button id="demo" onclick="x(mE.getValue()); clrtab(); falsepos(xl.value, xu.value, eps.value);">Calculate</button>
+				<br>
+
+				<table border="2" class="output" id="disp" style="color:white ;">
+					<thead>
+						<tr>
+							<th>I</th>
+							<th>Xl</th>
+							<th>f(Xl)</th>
+							<th>Xu</th>
+							<th>f(Xu)</th>
+							<th>Xr</th>
+							<th>f(Xr)</th>
+							<th>Error</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+
+
+	
+
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/math.js"></script>
+	<script src="assets/math/latex-to-js.js"></script>
+	<script src="assets/math/mathquill.js"></script>
+	<script src="assets/math/matheditor.js"></script>
+	<script> //Work-around for Chrome CORS support
+		var mE = new MathEditor('mathfield');
+		function x(x) {
+			var span = document.getElementById('hidden');
+			z = latex_to_js(x);
+			span.innerHTML = z;
+			return x;
+		}	
+
+		
+
+	</script>
+
+
+          
+    
+    
+</body>
+</html>
